@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="dynamic-table">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>email</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td ><input type="text" name="name[]" ></td>
+                <td><input type="email" name="email[]"></td>
+                <td><button type="button" onclick="removeRow(this)"> remove</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" onclick="addRow()"> addrow</button>
+
+    <script>
+        function addRow(){
+            var table=document.getElementById("dynamic-table").getElementsByTagName("tbody")[0];
+            var newRow=table.insertRow();
+            newRow.innerHTML=`
+            <td ><input type="text" name="name[]" ></td>
+                <td><input type="email" name="email[]"></td>
+                <td><button type="button" onclick="removeRow(this)"> remove</button></td>`;
+            }
+
+        function removeRow(button) {
+            var row=button.parentNode.parentNode;
+            row.remove();
+        }       
+
+       
+    </script>
+</body>
+</html>
